@@ -68,7 +68,7 @@ public class LoginTest extends BaseClass {
 
 		Object[][] data = null;
 		try {
-			excelSheet = new MyXLSReader("src\\test\\resources\\TestDataFor Demo.xlsx");
+			excelSheet = new MyXLSReader("src\\test\\resources\\DemoTestData.xlsx");
 			data = DataUtil.getTestData(excelSheet, "LoginTest", "Data");
 
 		} catch (Throwable e) {

@@ -1,27 +1,20 @@
 package assignments;
 
-import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.time.Duration;
-import java.util.List;
-
-import javax.imageio.ImageIO;
-
 import org.testng.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+import java.awt.AWTException;
 
-import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.net.URL;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.awt.event.KeyEvent;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
@@ -33,22 +26,26 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import java.awt.datatransfer.StringSelection;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class Task2 {
+public class AolEmailSendAndVerifiaction {
+	
 	WebDriver d; 
 	Actions act;
 	WebDriverWait wait;
+	ChromeOptions op;
 	
 	@BeforeTest
 	public void launchBrowser() {
-		d = new ChromeDriver();
-		d.manage().window().maximize();
+		op = new ChromeOptions();
+		op.addArguments("--incognito","--start-maximized");
+		d = new ChromeDriver(op);
 		d.get("https://mail.aol.com");
 		
 	}
@@ -75,7 +72,7 @@ public class Task2 {
 		submitButton.click();	
 	}
 	@AfterClass
-	public void logout() throws InterruptedException {
+	public void signOut() throws InterruptedException {
 		
 		d.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		WebElement userMenu = d.findElement(By.xpath("//span[@role='presentation']"));
@@ -89,6 +86,7 @@ public class Task2 {
 		
 		String expectedImageSize = "3.7kB";
 		String expectedSubject = "Damco";
+		
 		
 		wait = new WebDriverWait(d, Duration.ofSeconds(30));
 		

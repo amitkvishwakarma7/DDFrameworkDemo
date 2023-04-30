@@ -3,12 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testsClasses.Login">
+      <class name="assignments.AolEmailSendAndVerifiaction">
         <methods>
+          <include name="task2"/>
+          <include name="login"/>
+          <include name="signOut"/>
           <include name="tearDown"/>
-          <include name="login" invocation-numbers="1 2"/>
+          <include name="launchBrowser"/>
         </methods>
-      </class> <!-- testsClasses.Login -->
+      </class> <!-- assignments.AolEmailSendAndVerifiaction -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
